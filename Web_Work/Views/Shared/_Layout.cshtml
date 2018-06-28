@@ -10,82 +10,127 @@
 </head>
 <body>
     @*<div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <ol>
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <ol>
 
-                <li>
-                    @Html.ActionLink("Начальная страница", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </li>
+                    <li>
+                        @Html.ActionLink("Начальная страница", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
 
-                    @if (Model != null)
-                    {
-                        <li>@Model.Email</li>
-                        <li>@Html.ActionLink("Выход", "Logout", "Login", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Вход", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })</li>
-                        <li>@Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    }
-                </ol>
+                        @if (Model != null)
+                        {
+                            <li>@Model.Email</li>
+                            <li>@Html.ActionLink("Выход", "Logout", "Login", new { area = "" }, new { @class = "navbar-brand" })</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Вход", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            <li>@Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "navbar-brand" })</li>
+                        }
+                    </ol>
 
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                    </ul>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-        </div>
-    </div>*@
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav-item active">
-                <li class="form-control mr-sm-0">@Html.ActionLink("Начальная страница", "Index", "Home", new { area = "" }, new { @class = "nav-item" })</li>
-            </ul>
-
+        </div>*@
+        <nav class="navbar navbar-expand-xl sticky-top navbar-dark bg-secondary">
+            <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-                @if (User.Identity.IsAuthenticated == true)
-                {
-                    <form class="form-inline my-2 my-lg-0">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link  dropdown-toggle form-control mr-sm-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                   @User.Identity.Name
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @Html.ActionLink("Выход", "Logoff", "Account", new { area = "" }, new { @class = "dropdown-item nav-item form-control mr-sm-0" })
-                                </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Начальная страница", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        @if (User.Identity.IsAuthenticated == true)
+                        {
+                            <li class="nav-item form-text mr-sm-2">
+                                <p class="d-inline p-2 bg-secondary text-uppercase text-white text-center">@User.Identity.Name</p>
                             </li>
-                        </ul>
-                    </form>
-                }
-                else
-                {
-                    <form class="form-inline my-2 my-lg-0">
-                        <ul>
-                            <li class="nav-item form-control mr-sm-0">@Html.ActionLink("Вход", "Login", "Account", new { area = "" }, new { @class = "nav-item" })</li>
-                            <li class="nav-item form-control mr-sm-0">@Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "nav-item" })</li>
-                        </ul>
-                    </form>
-                }
+                            <li class="nav-item form-l mr-sm-2">
+                                @Html.ActionLink("Выход", "Logoff", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                            </li>
+                            @*<ul class="navbar-nav mr-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        @User.Identity.Name
+                                    </a>
+                                    <div class="dropdown-menu form-l" aria-labelledby="navbarDropdown">
+                                        @Html.ActionLink("Выход", "Logoff", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                                    </div>
+                                </li>
+                            </ul>*@
+                        }
+                        else
+                        {
+                            <li class="nav-item mr-sm-2">
+                                @Html.ActionLink("Вход", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                            </li>
+                            <li class="nav-item mr-sm-2">
+                                @Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                            </li>
+
+                            @*<ul>
+                                <li class="nav-item">@Html.ActionLink("Вход", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })</li>
+                            </ul>
+                                <li class="nav-item">@Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "navbar-brand" })</li>*@
+                        }
+                    </ul>
+                </form>
+            </div>
         </div>
-    </nav>
+        </nav>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr/>
-    </div>
 
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+        @*<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-secondary">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar1">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        @Html.ActionLink("Дом", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("Пользователи", "Index", "Users", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            @Html.ActionLink("Вход", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                        </li>
+                        <li class="nav-item form-l">
+                            @Html.ActionLink("Выход", "Logoff", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </nav>*@
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+        </div>
+
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>
