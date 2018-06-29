@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Web_Work.Models.Базы_данных
+namespace Web_Work.Models.DataBase
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;

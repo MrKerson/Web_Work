@@ -6,6 +6,7 @@ using System.Web;
 
 namespace Web_Work.Models.AuthUser
 {
+    //[DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class UserAuthContext : DbContext
     {
         public UserAuthContext() : base("UserAuthDB")

@@ -6,6 +6,7 @@ using System.Web;
 
 namespace Web_Work.Models.ItemDB
 {
+    //[DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class FileContext : DbContext
     {
         public FileContext() : base("FileDB")
