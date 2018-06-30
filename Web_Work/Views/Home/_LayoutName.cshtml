@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Web_Work.Models.AuthUser.User>
+
+@if (User.Identity.IsAuthenticated != true)
+{
+    <form class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @User.Identity.Name
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @Html.ActionLink("Выход", "Logout", "Account", new { area = "" }, new { @class = "dropdown-item" })
+                </div>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <form class="form-inline my-2 my-lg-0">
+        <ul>
+            <li class="nav-item form-control mr-sm-0">@Html.ActionLink("Вход", "Login", "Account", new { area = "" }, new { @class = "nav-item" })</li>
+            <li class="nav-item form-control mr-sm-0">@Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "nav-item" })</li>
+        </ul>
+    </form>
+}
